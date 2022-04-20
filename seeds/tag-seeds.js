@@ -2,28 +2,40 @@ const { Tag } = require('../models');
 
 const tagData = [
   {
-    tag_name: 'rock music',
+    tag_name: 'skin care',
   },
   {
-    tag_name: 'pop music',
+    tag_name: 'hair care',
   },
   {
-    tag_name: 'blue',
+    tag_name: 'candles',
   },
   {
-    tag_name: 'red',
+    tag_name: 'pillows',
   },
   {
-    tag_name: 'green',
+    tag_name: 'notebook',
   },
   {
-    tag_name: 'white',
+    tag_name: 'sheet music',
   },
   {
-    tag_name: 'gold',
+    tag_name: 'shirt',
   },
   {
-    tag_name: 'pop culture',
+    tag_name: 'clothes',
+  },
+  {
+    tag_name: 'neutral',
+  },
+  {
+    tag_name: 'print',
+  },
+  {
+    tag_name: 'black and white',
+  },
+  {
+    tag_name: 'portrait',
   },
 ];
 
