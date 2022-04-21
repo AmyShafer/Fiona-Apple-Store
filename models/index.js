@@ -7,21 +7,13 @@ const ProductTag = require('./ProductTag');
 // Products belongsTo Category
 Product.belongsTo(Category, {
   // Define the third table needed to store the foreign keys
-  through: { 
-    model: Tag,
-    unique: false
-  },
-  as: 'tag_id'
+  foreignKey: 'category_id'
 });
 
 // Categories have many Products
-Category.belongsToMany(Product, {
+Category.hasMany(Product, {
   // Define the third table needed to store the foreign keys
-  through: {
-    model: Tag,
-    unique: false
-  },
-  as: 'category_is'
+  foreignKey: 'category_id'
 });
 
 // Products belongToMany Tags (through ProductTag)
@@ -30,7 +22,7 @@ Product.belongsToMany(Tag, {
     model: ProductTag,
     unique: false
   },
-  as: 'product_id'
+  foreignKey: 'product_id'
 })
 
 // Tags belongToMany Products (through ProductTag)
@@ -39,7 +31,7 @@ Tag.belongsToMany(Product, {
     model: ProductTag,
     unique: false
   },
-  as: 'tag_id'
+  foreignKey: 'tag_id'
 })
 
 module.exports = {
