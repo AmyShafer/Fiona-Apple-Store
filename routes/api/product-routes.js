@@ -2,8 +2,7 @@ const router = require('express').Router();
 const { Product, Category, Tag, ProductTag } = require('../../models');
 
 // The `/api/products` endpoint
-
-// get all products
+// GET all products
 router.get('/', async (req, res) => {
   // find all products
   try {
@@ -15,11 +14,12 @@ router.get('/', async (req, res) => {
   // be sure to include its associated Category and Tag data
 });
 
-// get one product
+// GET one product
 router.get('/:id', async (req, res) => {
   // find a single product by its `id`
   try {
     const productData = await Product.findByPk(req.params.id, {
+      // be sure to include its associated Category and Tag data
       include: [{ model: Category, through: ProductTag, as: 'tag_id'}]
     });
 
@@ -32,10 +32,9 @@ router.get('/:id', async (req, res) => {
   } catch (err) {
     res.status(500).json(err);
   }
-  // be sure to include its associated Category and Tag data
 });
 
-// create new product
+// CREATE new product
 router.post('/', async (req, res) => {
   /* req.body should look like this...
     {
@@ -68,7 +67,7 @@ router.post('/', async (req, res) => {
     });
 });
 
-// update product
+// UPDATE product
 router.put('/:id', (req, res) => {
   // update product data
   Product.update(req.body, {
@@ -110,8 +109,8 @@ router.put('/:id', (req, res) => {
     });
 });
 
+// DELETE one product by its `id` value
 router.delete('/:id', async (req, res) => {
-  // delete one product by its `id` value
   try {
     const productData = await Product.destroy({ 
       where: {
@@ -125,7 +124,7 @@ router.delete('/:id', async (req, res) => {
      } 
      
      res.status(200).json(productData);
-  } catch {
+  } catch (err) {
     res.status(500).json(err);
   }
 });
