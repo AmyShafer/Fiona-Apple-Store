@@ -21,7 +21,7 @@ Category.belongsToMany(Product, {
     model: Tag,
     unique: false
   },
-  as: 'category_name'
+  as: 'category_is'
 });
 
 // Products belongToMany Tags (through ProductTag)
