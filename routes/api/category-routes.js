@@ -28,7 +28,7 @@ router.get('/:id', async (req, res) => {
     },
     // be sure to include its associated Products
     include: [
-      Category, 
+      Product, 
       {
         model: Tag,
         through: ProductTag
@@ -45,7 +45,7 @@ router.get('/:id', async (req, res) => {
 router.post('/', async (req, res) => {
   try {
     const categoryData = await Category.create(req.body);
-    res.status(200).json(tagData);
+    res.status(200).json(categoryData);
   } catch (err) {
     res.status(400).json(err);
   }
@@ -53,11 +53,32 @@ router.post('/', async (req, res) => {
 
 // UPDATE a category by its `id` value
 router.put('/:id', async (req, res) => {
-  Category.update(req.body, {
-    where: {
-      id: req.params.id,
-    },
-  })
+  try {
+    const categoryData = await Category.update(req.body, {
+      where: {
+        id: req.params.id,
+      },
+    })
+
+    res.status(200).json(categoryData);
+  } catch (err) {
+    res.status(400).json(err);
+  }
+});
+
+// UPDATE a category by its `id` value
+router.put('/:id', async (req, res) => {
+  try {
+    const categoryData = await Category.update(req.body, {
+      where: {
+        id: req.params.id,
+      }
+    }); 
+
+  res.status(200).json(categoryData);
+  } catch(err) {
+  res.status(400).json(err);
+  }
 });
 
 // DELETE a category by its `id` value

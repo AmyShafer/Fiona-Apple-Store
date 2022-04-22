@@ -5,17 +5,17 @@ const { Product, Category, Tag, ProductTag } = require('../../models');
 // GET all products
 router.get('/', async (req, res) => {
   Product.findAll({
-      // be sure to include its associated Category and Tag data
-      include: [
-        Category, 
-        {
-          model: Tag,
-          through: ProductTag
-        }
-      ]
+    // be sure to include its associated Category and Tag data
+    include: [
+      Category, 
+      {
+        model: Tag,
+        through: ProductTag
+      }
+    ]
   }).then(products => res.json(products))
 
-  .catch ((err) => {
+  .catch((err) => {
     res.status(500).json(err);
   })
 });
@@ -27,13 +27,13 @@ router.get('/:id', async (req, res) => {
       id: req.params.id
     }, 
     // be sure to include its associated Category
-      include: [
-        Category, 
-        {
-          model: Tag,
-          through: ProductTag
-        }
-      ]
+    include: [
+      Category, 
+      {
+        model: Tag,
+        through: ProductTag
+      }
+    ]
    }).then(products => res.json(products))
   
   .catch ((err) => {
@@ -130,7 +130,7 @@ router.delete('/:id', async (req, res) => {
        return;
      } 
      
-     res.status(200).json(productData);
+    res.status(200).json(productData);
   } catch (err) {
     res.status(500).json(err);
   }
