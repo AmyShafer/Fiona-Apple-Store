@@ -29,15 +29,15 @@ router.get('/:id', async (req, res) => {
     // JOIN with ProductTag, using the Product through table
       // be sure to include its associated Product data
       include: [
-        Tag,
-        // {
-        //   model: Tag,
-        //   through: ProductTag
-        // }
-      ]
-    }).then(tags => res.json(tags))
+        {
+          model: Product,
+          through: ProductTag
+        },
+      ],
+    }).then(tag => res.json(tag))
 
     .catch ((err) => {
+      console.log(err);
       res.status(500).json(err);
     })
   });

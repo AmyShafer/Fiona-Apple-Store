@@ -32,8 +32,8 @@ Next, run the seeds!
 Start the application: 
 <img src="assets/fas4.png" alt="node command" width="600"/>
 
-Have fun!
-<img src="assets/fas5.png" alt="application demo" width="600"/> MySQL2
+Check out the store!
+<img src="assets/fas5.png" alt="application demo" width="600"/>
 
 ## Resources Used
 
@@ -51,6 +51,7 @@ This article helped me understand dotenv more clearly.
 In the future, I would like to add descriptions to the seeded products.
 
 I think that this would be a fun store to design so I would enjoy revisiting that side of this project too.
+    console.log(`Listening to Fiona Apple on port ${PORT}!`);
 
 ## Walk Through Video
 Here's a walk through video for the Fiona Apple Store:
